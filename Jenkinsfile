@@ -1,22 +1,14 @@
 pipeline {
     agent any
         stages {
-            stage('PR-Generated Against Master'){
-              when {
-                  changeRequest target: 'master'
-                  }
-              steps {
-                  echo 'PR raised against master branch'
-              }
-            }
             stage('Build') {
                 steps {
-                    echo 'Building'
+                    sh(echo 'Building')
                 }
             }
             stage('Test') {
                 steps {
-                    echo 'Testing'
+                      sh(echo 'Testing')
                 }
             }
             stage('Deploy') {
@@ -24,7 +16,7 @@ pipeline {
                     branch 'master'
                 }
                 steps {
-                    echo 'Deploying'
+                    sh(echo 'Deploying')
                 }
             }
     }
