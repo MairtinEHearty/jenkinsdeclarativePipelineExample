@@ -11,6 +11,14 @@ pipeline {
                 echo 'Testing'
             }
         }
+        stage('PR-Generated Against Master'){
+          when {
+              changeRequest target: 'master'
+              }
+          steps {
+              echo 'PR raised against master branch'
+          }
+        }
         stage('Deploy') {
             when {
                 branch 'master'
